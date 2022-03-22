@@ -1,12 +1,52 @@
 #include "Engine.h"
 
+#include <raylib.h>
 #include "Entity.h"
+#include "Game.h"
+#include "ResourceManager.h"
 
-void Engine::AddEntity(Entity* newEntity)
+Engine::Engine()
 {
-	if (newEntity)
+	resourceManager = new ResourceManager();
+}
+
+Engine::~Engine()
+{
+	delete resourceManager;
+}
+
+void Engine::Launch(Game* newGame, const std::string& title)
+{
+	game = newGame;
+	InitWindow(WINDOW_WIDTH, WINDOW_HEIGHT, title.c_str());
+	SetTargetFPS(60);
+
+	game->Start();
+
+	MainLoop();
+}
+
+const Game* Engine::GetGame() const
+{
+	return game;
+}
+
+ResourceManager* const Engine::GetResourceManager() const
+{
+	return resourceManager;
+}
+
+void Engine::MainLoop()
+{
+	while (!WindowShouldClose())
 	{
-		entities.push_back(newEntity);
+		UpdateEntities(0);
+
+		ClearBackground(RAYWHITE);
+
+		DrawEntities();
+
+		EndDrawing();
 	}
 }
 
@@ -16,7 +56,7 @@ void Engine::DrawEntities()
 	{
 		if (!entity->IsDestroyed())
 		{
-			entity->Draw();
+			entity->Draw(4);
 		}
 	}
 }

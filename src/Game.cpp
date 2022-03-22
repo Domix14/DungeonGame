@@ -1,27 +1,33 @@
 #include "Game.h"
 
 #include "utils.h"
+#include "StaticEntity.h"
+#include "Engine.h"
 #include <raylib.h>
 
-void Game::Launch()
+
+Game::Game(Engine* inEngine) :
+	engine(inEngine)
 {
-	InitWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "DungeonGame");
-	SetTargetFPS(60);
-	MainLoop();
-	
 }
 
-void Game::MainLoop()
+void Game::Start()
 {
-
-	while (!WindowShouldClose())
+	for (size_t i = 0; i < 12; i++)
 	{
-		BeginDrawing();
-
-		ClearBackground(RAYWHITE);
-
-		EndDrawing();
+		Entity* entity = GetEngine()->AddEntity<StaticEntity>("wall_top_mid");
+		entity->SetPosition({ (float)i * 64 + 64, 64 });
+		entity = GetEngine()->AddEntity<StaticEntity>("wall_mid");
+		entity->SetPosition({ (float)i * 64 + 64, 128 });
+		entity = GetEngine()->AddEntity<StaticEntity>("floor_1");
+		entity->SetPosition({ (float)i * 64 + 64, 192});
+		entity = GetEngine()->AddEntity<StaticEntity>("floor_1");
+		entity->SetPosition({ (float)i * 64 + 64, 256 });
 	}
-	
-	CloseWindow();
+	//StaticEntity* wall = dynamic_cast<StaticEntity*>(GetEngine()->AddEntity<StaticEntity>("wall_mid"));
+}
+
+Engine* const Game::GetEngine() const
+{
+	return engine;
 }

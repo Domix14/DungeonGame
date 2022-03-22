@@ -1,16 +1,19 @@
 #pragma once
 
-#define WINDOW_WIDTH 800
-#define WINDOW_HEIGHT 600
+class Engine;
 
 class Game
 {
 public:
-	void Launch();
+	Game(Engine* inEngine);
+	void Start();
+
+protected:
+	Engine* const GetEngine() const;
 
 
 private:
-	void MainLoop();
+	Engine* engine;
 
 };
 
