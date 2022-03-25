@@ -12,6 +12,7 @@ public:
 	virtual void Draw(float scale) override;
 	virtual void Update(float deltaTime) override;
 	virtual void OnCollision(Entity* entity) override;
+	virtual Rectangle GetCollisionRect() override;
 
 private:
 	Texture2D* texture;

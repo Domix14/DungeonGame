@@ -26,3 +26,13 @@ void StaticEntity::Update(float deltaTime)
 void StaticEntity::OnCollision(Entity* entity)
 {
 }
+
+Rectangle StaticEntity::GetCollisionRect()
+{
+	Rectangle rectangle;
+	rectangle.height = texture->height;
+	rectangle.width = texture->width;
+	rectangle.x = GetPosition().x;
+	rectangle.y = GetPosition().y;
+	return rectangle;
+}

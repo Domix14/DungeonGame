@@ -4,6 +4,13 @@
 
 class Engine;
 
+enum class CollisionType
+{
+	NoCollision,
+	Static,
+	Dynamic
+};
+
 class Entity
 {
 public:
@@ -18,14 +25,25 @@ public:
 
 	Vector2 GetPosition();
 	void SetPosition(Vector2 newPosition);
-
+	void Move(Vector2 dPos);
+	void SetVelocity(Vector2 newVelocity);
+	Vector2 GetVelocity() const;
+	
+	CollisionType GetCollisionType() const;
+	void SetCollisionType(CollisionType newCollisionType);
+	virtual Rectangle GetCollisionRect() = 0;
+	
+	
 protected:
-	const Engine* GetEngine() const;
+	Engine* const GetEngine() const;
 
 private:
 	Engine* engine;
 
+	Vector2 velocity;
+	Rectangle collisionRect;
 	Vector2 position;
+	CollisionType collisionType;
 	bool bDestroyed;
 };
 
