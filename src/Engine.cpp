@@ -10,7 +10,7 @@ Engine::Engine()
 	resourceManager = new ResourceManager();
 	camera.target = { 0,0 };
 	camera.rotation = 0;
-	camera.offset = { 0, 0 };
+	camera.offset = { WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2 };
 	camera.zoom = 1;
 }
 
@@ -52,7 +52,7 @@ void Engine::MainLoop()
 		UpdateEntities(0);
 		UpdateDynamicCollisions(GetFrameTime());
 		
-		ClearBackground(RAYWHITE);
+		ClearBackground(BLACK);
 		
 		BeginMode2D(camera);
 		DrawEntities();

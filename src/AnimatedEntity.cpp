@@ -4,7 +4,7 @@
 #include "ResourceManager.h"
 
 AnimatedEntity::AnimatedEntity(Engine* engine, const std::vector<std::vector<std::string>>& animationsNames) :
-	Entity(engine), selectedAnimation(0), animationFrame(0), prescaler(5), prescalerCounter(0)
+	Entity(engine), selectedAnimation(1), animationFrame(0), prescaler(5), prescalerCounter(0)
 {
 	for(const auto& anim : animationsNames)
 	{
@@ -33,6 +33,7 @@ void AnimatedEntity::OnCollision(Entity* entity)
 
 void AnimatedEntity::SelectAnimation(size_t animationID)
 {
+	if (animationID == selectedAnimation) return;
 	animationFrame = 0;
 	selectedAnimation = animationID;
 }

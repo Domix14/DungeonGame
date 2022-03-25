@@ -21,4 +21,13 @@ void Player::Update(float deltaTime)
 	if (IsKeyDown(KEY_A)) SetVelocity({ -2, 0 });
 	if (IsKeyDown(KEY_W)) SetVelocity({ 0, -2 });
 	GetEngine()->SetCameraPosition(GetPosition());
+
+	if (abs(GetVelocity().x) > 0 || abs(GetVelocity().y) > 0)
+	{
+		SelectAnimation(1);
+	}
+	else
+	{
+		SelectAnimation(0);
+	}
 }

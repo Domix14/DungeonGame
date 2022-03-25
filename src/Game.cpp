@@ -59,7 +59,10 @@ void Game::Start()
 
 	}
 
-	std::vector<std::vector<std::string>> animations = { {"big_zombie_run_anim_f0", "big_zombie_run_anim_f1", "big_zombie_run_anim_f2", "big_zombie_run_anim_f3"} };
+	std::vector<std::vector<std::string>> animations = {
+		{"knight_f_idle_anim_f0", "knight_f_idle_anim_f1", "knight_f_idle_anim_f2", "knight_f_idle_anim_f3"},
+		{"knight_f_run_anim_f0", "knight_f_run_anim_f1", "knight_f_run_anim_f2", "knight_f_run_anim_f3"}
+	};
 	Entity* entity = GetEngine()->AddEntity<Player>(animations);
 	entity->SetPosition({ 128, 128 });
 	entity->SetCollisionType(CollisionType::Dynamic);
