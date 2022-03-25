@@ -16,7 +16,7 @@ class Entity
 public:
 	Entity(Engine* engine);
 
-	virtual void Draw(float scale) = 0;
+	virtual void Draw() = 0;
 	virtual void Update(float deltaTime) = 0;
 	virtual void OnCollision(Entity* entity) = 0;
 
@@ -28,7 +28,9 @@ public:
 	void Move(Vector2 dPos);
 	void SetVelocity(Vector2 newVelocity);
 	Vector2 GetVelocity() const;
-	
+	void SetScale(float newScale);
+	float GetScale() const;
+
 	CollisionType GetCollisionType() const;
 	void SetCollisionType(CollisionType newCollisionType);
 	virtual Rectangle GetCollisionRect() = 0;
@@ -44,6 +46,7 @@ private:
 	Rectangle collisionRect;
 	Vector2 position;
 	CollisionType collisionType;
+	float scale;
 	bool bDestroyed;
 };
 

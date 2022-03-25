@@ -56,7 +56,7 @@ void Engine::MainLoop()
 		
 		BeginMode2D(camera);
 		DrawEntities();
-		DrawCollisions();
+		//DrawCollisions();
 		EndMode2D();
 		
 		EndDrawing();
@@ -69,7 +69,7 @@ void Engine::DrawEntities()
 	{
 		if (!entity->IsDestroyed())
 		{
-			entity->Draw(3);
+			entity->Draw();
 		}
 	}
 }

@@ -4,7 +4,8 @@ Entity::Entity(Engine* inEngine) :
 	engine(inEngine),
 	position({0, 0}),
 	bDestroyed(false),
-	collisionType(CollisionType::NoCollision)
+	collisionType(CollisionType::NoCollision),
+	scale(3)
 {
 
 }
@@ -43,6 +44,16 @@ void Entity::SetVelocity(Vector2 newVelocity)
 Vector2 Entity::GetVelocity() const
 {
 	return velocity;
+}
+
+void Entity::SetScale(float newScale)
+{
+	scale = newScale > 0 ? newScale : scale;
+}
+
+float Entity::GetScale() const
+{
+	return scale;
 }
 
 CollisionType Entity::GetCollisionType() const

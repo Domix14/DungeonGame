@@ -7,9 +7,9 @@ AnimatedEntity(engine, animationsNames)
 {
 }
 
-void Player::Draw(float scale)
+void Player::Draw()
 {
-	DrawAnimation(scale);
+	DrawAnimation();
 }
 
 void Player::Update(float deltaTime)

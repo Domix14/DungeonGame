@@ -31,6 +31,9 @@ void Game::Start()
 		Entity* entity = GetEngine()->AddEntity<StaticEntity>("wall_side_mid_left");
 		entity->SetPosition({ 48,(float)i * 48 + 96 });
 		entity->SetCollisionType(CollisionType::Static);
+		entity = GetEngine()->AddEntity<StaticEntity>("wall_side_mid_right");
+		entity->SetPosition({ 672,(float)i * 48 + 96 });
+		entity->SetCollisionType(CollisionType::Static);
 	}
 
 
@@ -45,6 +48,16 @@ void Game::Start()
 		}
 	}
 
+	// Bottom walls
+	for (size_t i = 0; i < 12; ++i)
+	{
+		Entity* entity = GetEngine()->AddEntity<StaticEntity>("wall_top_mid");
+		entity->SetPosition({ (float)i * 48 + 96, 336 });
+		entity = GetEngine()->AddEntity<StaticEntity>("wall_mid");
+		entity->SetPosition({ (float)i * 48 + 96, 384 });
+		entity->SetCollisionType(CollisionType::Static);
+
+	}
 
 	std::vector<std::vector<std::string>> animations = { {"big_zombie_run_anim_f0", "big_zombie_run_anim_f1", "big_zombie_run_anim_f2", "big_zombie_run_anim_f3"} };
 	Entity* entity = GetEngine()->AddEntity<Player>(animations);

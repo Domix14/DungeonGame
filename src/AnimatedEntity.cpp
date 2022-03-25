@@ -17,9 +17,9 @@ AnimatedEntity::AnimatedEntity(Engine* engine, const std::vector<std::vector<std
 	}
 }
 
-void AnimatedEntity::Draw(float scale)
+void AnimatedEntity::Draw()
 {
-	DrawAnimation(scale);
+	DrawAnimation();
 }
 
 void AnimatedEntity::Update(float deltaTime)
@@ -54,14 +54,14 @@ void AnimatedEntity::UpdateAnimation()
 Rectangle AnimatedEntity::GetCollisionRect()
 {
 	Rectangle rectangle;
-	rectangle.height = animations[selectedAnimation][animationFrame]->height - 10;
-	rectangle.width = animations[selectedAnimation][animationFrame]->width - 10;
+	rectangle.height = animations[selectedAnimation][animationFrame]->height * GetScale() - 10;
+	rectangle.width = animations[selectedAnimation][animationFrame]->width * GetScale() - 10;
 	rectangle.x = GetPosition().x + 10;
 	rectangle.y = GetPosition().y + 10;
 	return rectangle;
 }
 
-void AnimatedEntity::DrawAnimation(float scale)
+void AnimatedEntity::DrawAnimation()
 {
-	DrawTextureEx(*animations[selectedAnimation][animationFrame], GetPosition(), 0, scale, { 255,255,255,255 });
+	DrawTextureEx(*animations[selectedAnimation][animationFrame], GetPosition(), 0, GetScale(), { 255,255,255,255 });
 }

@@ -14,9 +14,9 @@ StaticEntity::StaticEntity(Engine* engine, const std::string& textureName) :
 	}
 }
 
-void StaticEntity::Draw(float scale)
+void StaticEntity::Draw()
 {
-	DrawTextureEx(*texture, GetPosition(), 0, scale, { 255,255,255,255 });
+	DrawTextureEx(*texture, GetPosition(), 0, GetScale(), { 255,255,255,255 });
 }
 
 void StaticEntity::Update(float deltaTime)

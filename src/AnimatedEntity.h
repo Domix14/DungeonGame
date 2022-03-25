@@ -8,7 +8,7 @@ class AnimatedEntity : public Entity
 public:
 	AnimatedEntity(Engine* engine, const std::vector<std::vector<std::string>>& animationsNames);
 	
-	virtual void Draw(float scale) override;
+	virtual void Draw() override;
 	virtual void Update(float deltaTime) override;
 	virtual void OnCollision(Entity* entity) override;
 
@@ -17,7 +17,7 @@ public:
 	virtual Rectangle GetCollisionRect() override;
 
 protected:
-	void DrawAnimation(float scale);
+	void DrawAnimation();
 	
 private:
 	std::vector<std::vector<Texture2D*>> animations;
